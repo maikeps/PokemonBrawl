@@ -38,8 +38,11 @@ public class DragonRage extends ObjetoComMovimento{
     Imagem spriteUpRight;
     Imagem spriteDownRight;
     
+    int dano;
+    
     
     public DragonRage(int x, int y, Direcao direcao){
+        this.setDano(5);
         this.desativado = false;
         this.x = x;
         this.y = y;
@@ -144,6 +147,13 @@ public class DragonRage extends ObjetoComMovimento{
         } else {
             return false;
         }
+    }
+    
+    public void setDano(int n){
+        this.dano = n;
+    }
+    public int getDano(){
+        return this.dano;
     }
 
 }

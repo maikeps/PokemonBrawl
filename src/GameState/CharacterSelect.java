@@ -22,8 +22,8 @@ import poke.Keys;
 public class CharacterSelect implements GameStateController{
 
     private Imagem Charizard;
-    private Sprite Bulbasaur;
-    private Sprite Pidgeotto;
+    private Imagem Bulbasaur;
+    private Imagem Pidgeotto;
     private String player1;
     private String player2;
     
@@ -32,8 +32,8 @@ public class CharacterSelect implements GameStateController{
 
         try {
             this.Charizard = new Imagem("resources/personagens/Charmander/Charizard_Down.gif");
-            this.Bulbasaur = new Sprite("resources/personagens/Bulbasaur/Bulbasaur_Down.gif", 1, 80, 80);
-            this.Pidgeotto = new Sprite("resources/personagens/Pidgeotto_Down.gif", 1, 80, 80);
+            this.Bulbasaur = new Imagem("resources/personagens/Bulbasaur/Bulbasaur_Down.gif");
+            this.Pidgeotto = new Imagem("resources/personagens/Pidgey/Pidgeotto_Down.gif");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Recurso não ecnontrado: "+ex.getMessage());
             System.exit(1);
@@ -86,7 +86,7 @@ public class CharacterSelect implements GameStateController{
 
     public void draw(Graphics g) {  
         g.setColor(Color.black);
-        g.fillRect(0, 0, 800, 600);
+        g.fillRect(0, 0, 800, 700);
         
         g.drawString("escolha o personagem", 325, 420);
         

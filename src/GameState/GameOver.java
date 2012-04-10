@@ -56,7 +56,7 @@ public class GameOver implements GameStateController{
 
     public void draw(Graphics g) {  
         g.setColor(Color.black);
-        g.fillRect(0, 0, 800, 600);
+        g.fillRect(0, 0, 800, 700);
         this.gameOver.draw(g, 335, 250);
         this.retry.draw(g, 360, 350);
         

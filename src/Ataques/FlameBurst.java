@@ -18,8 +18,10 @@ public class FlameBurst extends ObjetoComMovimento{
     Sprite spriteVazio;
     Sprite spriteAtual;
     
+    int dano;
 
     public FlameBurst(int x, int y){
+        this.setDano(10);
         AudioPlayer.play("resources/sounds/Sound 1.wav");
         this.desativado = false;
         this.x = x;
@@ -85,6 +87,13 @@ public class FlameBurst extends ObjetoComMovimento{
         return this.frameElapsed;
     }
     
+    public void setDano(int n){
+        this.dano = n;
+    }
+    
+    public int getDano(){
+        return this.dano;
+    }
 
 
 }

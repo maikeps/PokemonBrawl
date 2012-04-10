@@ -27,7 +27,11 @@ public class WingAttack extends ObjetoComMovimento{
     Sprite sprite;
     int frame;
     
+    int dano;
+    
     public WingAttack(int x, int y, Direcao direcao){
+        this.setDano(5);
+        
         this.desativado = false;
         this.x = x;
         this.y = y;
@@ -147,4 +151,12 @@ public class WingAttack extends ObjetoComMovimento{
         }
     }
 
+    public void setDano(int n){
+        this.dano = n;
+    }
+    
+    public int getDano(){
+        return this.dano;
+    }
+    
 }

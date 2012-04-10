@@ -17,9 +17,12 @@ public class Twister extends ObjetoComMovimento {
     Imagem sprite;
     int velocidade = 6;
     private boolean desativado;
+    
+    int dano;
 
     public Twister(int x, int y) {
-
+        this.setDano(2);
+        
         this.desativado = false;
         
         this.x = x;
@@ -124,5 +127,12 @@ public class Twister extends ObjetoComMovimento {
         }
     }
 
+    public void setDano(int n){
+        this.dano = n;
+    }
+    
+    public int getDano(){
+        return this.dano;
+    }
 
 }

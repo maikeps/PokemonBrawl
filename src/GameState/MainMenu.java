@@ -59,7 +59,7 @@ public class MainMenu implements GameStateController{
 
     public void draw(Graphics g) {  
         g.setColor(Color.black);
-        g.fillRect(0, 0, 800, 600);
+        g.fillRect(0, 0, 800, 700);
         this.imagem.draw(g, 195, 50);
         
         

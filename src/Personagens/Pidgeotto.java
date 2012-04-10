@@ -1,55 +1,35 @@
 package Personagens;
 
 
-import Personagens.Charizard;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Rectangle;
 import javaPlay.GameEngine;
-import javaPlay.GameObject;
 import javaPlay.Keyboard;
 import javaPlay.Imagem;
 import javax.swing.JOptionPane;
-import java.awt.event.KeyEvent;
 import poke.Keys;
-import poke.ObjetoComMovimento;
 import Ataques.Twister;
 import Ataques.WingAttack;
+import java.awt.Graphics;
 
 
 
-public class Pidgeotto extends ObjetoComMovimento{
+public class Pidgeotto extends Personagem{
     
-    //----------------------FAZER COLISAO----------------------\\
-    
-    private int velocidade = 5;
-    private int diametro = 20;
-    protected Imagem spriteLeft;
-    protected Imagem spriteRight;
-    protected Imagem spriteDown;
-    protected Imagem spriteUp;
-    protected Imagem spriteAtual;
-
     int controleRage = 30;
     int framesControleRage = 30;
     int controleTwister = 200;
     int framesControleTwister = 200;
-
-    int maxVida;
-    int numVida;
-    
     
     public Pidgeotto(){
         this.x = 600;
         this.y = 280;
-        this.numVida = 100;
-        this.maxVida = 100;
+        this.numVida = 200;
+        this.maxVida = 200;
         
         try{
-            this.spriteRight = new Imagem("resources/personagens/Pidgeotto_Right.gif");
-            this.spriteLeft = new Imagem("resources/personagens/Pidgeotto_Left.gif");
-            this.spriteDown = new Imagem("resources/personagens/Pidgeotto_Down.gif");
-            this.spriteUp = new Imagem("resources/personagens/Pidgeotto_Up.gif");
+            this.spriteRight = new Imagem("resources/personagens/Pidgey/Pidgeotto_Right.gif");
+            this.spriteLeft = new Imagem("resources/personagens/Pidgey/Pidgeotto_Left.gif");
+            this.spriteDown = new Imagem("resources/personagens/Pidgey/Pidgeotto_Down.gif");
+            this.spriteUp = new Imagem("resources/personagens/Pidgey/Pidgeotto_Up.gif");
             this.spriteAtual = this.spriteLeft;
         }catch (Exception ex){
             JOptionPane.showMessageDialog(null, "Recurso não ecnontrado: "+ex.getMessage());
@@ -59,6 +39,9 @@ public class Pidgeotto extends ObjetoComMovimento{
     }
     
     public void step(long timeElapsed){
+        
+        super.step(timeElapsed);
+        
         this.controleRage ++;
         this.controleTwister ++;
 
@@ -97,36 +80,14 @@ public class Pidgeotto extends ObjetoComMovimento{
             this.moveBaixo(5);
 
         }
-        
-        if(this.tocaCenarioDireita()){
-            this.x = 710;
-        }
-        if(this.tocaCenarioEsquerda()){
-            this.x = 7;
-        }
-        if(this.tocaCenarioBaixo()){
-            this.y = 485;
-        }
-        if(this.tocaCenarioCima()){
-            this.y = 70;
-        }
+      
     }
     
     public void draw(Graphics g){
-        this.spriteAtual.draw(g, this.x, this.y);
-        //g.drawString(this.numVida+"", this.x+5, this.y-30);
-        
-        g.setColor(Color.black);
-        g.fillRect(this.x-1, this.y+3, this.maxVida+2, 12);
-        g.setColor(Color.GREEN);
-        g.fillRect(this.x, this.y+4, this.numVida, 10);
-        
-        //this.vida.draw(g,this.x+12, this.y+3);
+        super.draw(g);
     }
     
     public WingAttack getWingAttack(){
-        //O tiro pode sair de qualquer um dos oito lados.
-        //E o x e y inicial do tiro podem sempre ser diferentes
 
         int xTiro = this.x;
         int yTiro = this.y;
@@ -173,8 +134,7 @@ public class Pidgeotto extends ObjetoComMovimento{
     }
     
      public Twister getTwister(){
-        //O tiro pode sair de qualquer um dos oito lados.
-        //E o x e y inicial do tiro podem sempre ser diferentes
+ 
 
         int xTiro = this.x;
         int yTiro = this.y;
@@ -231,39 +191,7 @@ public class Pidgeotto extends ObjetoComMovimento{
     public boolean podeAtirarTwister(){
         return (this.controleTwister > this.framesControleTwister);
     }
-    
-    public boolean tocaCenarioDireita(){
-        return (this.x + this.diametro >= 730);
-    }
-    
-    public boolean tocaCenarioEsquerda(){
-        return (this.x < 7);
-    }
-    
-    public boolean tocaCenarioBaixo(){
-        return (this.y > 485);
-    }
-    
-    public boolean tocaCenarioCima(){
-        return (this.y < 70);
-    }
-    
-    public boolean temColisao(Charizard p1){
-        return this.getRetangulo().intersects( p1.getRetangulo() );
-    }
-    
-    public Rectangle getRetangulo(){
-        return new Rectangle(this.x+4, this.y+14, this.spriteAtual.pegaLargura(), this.spriteAtual.pegaAltura());
-    }
-    
-    public void perdeVida(int numPontos){
-        this.numVida -= numPontos;  
-    }
-    
-    public boolean estaMorto(){
-        return (this.numVida <= 0);
-    }
-    
+ 
     public int getFrameRage(){
         return this.controleRage;
     }
@@ -284,16 +212,4 @@ public class Pidgeotto extends ObjetoComMovimento{
         this.controleTwister = n;
     }
 
-    public int getVida(){
-        return this.numVida;
-    }
-    public void setVida(int vida){
-        this.numVida = vida;
-    }
-    
-    public void resetPosicao(){
-        this.x = 600;
-        this.y = 280;
-    }
-    
 }
