@@ -1,0 +1,2 @@
+Ellipse2D elipse = new Ellipse2D.Double(this.x, this.y, 100, 100);
+        g.drawOval(this.x, this.y, 100, 100);
